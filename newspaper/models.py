@@ -6,6 +6,7 @@ class TimeStampModel(models.Model):
 
     class Meta:
         abstract=True # don't create table in DB
+        
 
 class Category(TimeStampModel):
     name=models.CharField(max_length=100)
@@ -15,6 +16,9 @@ class Category(TimeStampModel):
 
     class Meta:
         ordering=["name"]
+    
+        verbose_name="categories"
+        verbose_name_plural="Categories" #add this line
 
 class Tag(TimeStampModel):
     name=models.CharField(max_length=100)
