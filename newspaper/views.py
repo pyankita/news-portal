@@ -9,5 +9,5 @@ class HomeView(ListView):
     queryset=Post.objects.filter(
         published_at__isnull=False,status="active"
 
-    ).orderby("-published_at")[:4]
+    ).order_by("-published_at")[:4]
 
