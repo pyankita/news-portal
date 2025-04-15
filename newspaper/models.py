@@ -44,6 +44,13 @@ class Post(TimeStampModel):
 
     def __str__(self):
         return self.title
+    
+class Advertisement(TimeStampModel):
+    title=models.CharField(max_length=100)
+    image=models.ImageField(upload_to="advertisements/%Y/%m/%d",blank=False)
+
+    def __str__(self):
+        return self.title
 
 # Post - Author
 # 1 author can add M posts => M
