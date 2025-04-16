@@ -1,7 +1,7 @@
 from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render
-from newspaper.models import Post,Advertisement
+from newspaper.models import Post,Advertisement,Tag
 from django.views.generic import ListView
 
 
@@ -44,7 +44,7 @@ class HomeView(SidebarMixin,ListView):
 
         ).order_by("-published_at","-views_count")[:5]
 
-        context["categories"]= Post.object.all()[:4]
+        context["categories"]= Post.objects.all()[:4]
         
         return context
     
@@ -72,7 +72,7 @@ class PostByCategoriesView(SidebarMixin,ListView):
         query =query.filter(
             published_at__isnull=False,
             status="active",
-            category__id=self.kwargs["category_is"],
+            category__id=self.kwargs["category_id"],
         ).order_by("-published_at")
 
         return query
@@ -81,3 +81,13 @@ class TagListView(ListView):
     model=Tag
     template_name="newsportal/tags.html"
     context_object_name="tags"
+
+class AboutUsView(ListView):
+    model=Post
+    template_name="newsportal/about.html"
+
+class ContactDetailView(ListView):
+    model=Post
+    template_name="newsportal/contact.html"
+
+    

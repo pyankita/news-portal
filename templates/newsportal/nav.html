@@ -29,7 +29,7 @@
 
               {% for category in categories %}
               <li>
-                <a class="dropdown-item" href="{% url 'post-by-category' category.id%}">{{category.name|title}}</a>
+                <a class="dropdown-item" href="{% url 'post-by-category' category.id %}">{{category.name|title}}</a>
               </li>
               {% endfor %}
 
@@ -37,7 +37,7 @@
                 <hr class="dropdown-divider" />
               </li>
               <li>
-                <a class="dropdown-item" href="all-categories.html">All Categories</a>
+                <a class="dropdown-item" href="#">All Categories</a>
               </li>
               <li>
                 <a class="dropdown-item" href="{% url 'tag-list' %}">All Tags</a>
@@ -45,10 +45,10 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About Us</a>
+            <a class="nav-link" href="{% url 'about-us' %}">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact Us</a>
+            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#newsletter-section">Newsletter</a>
