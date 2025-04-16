@@ -9,6 +9,7 @@ class TimeStampModel(models.Model):
         
 
 class Category(TimeStampModel):
+    icon=models.CharField(max_length=100,null=True,blank=True)
     name=models.CharField(max_length=100)
 
     def __str__(self):
