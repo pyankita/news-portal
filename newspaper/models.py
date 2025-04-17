@@ -11,6 +11,7 @@ class TimeStampModel(models.Model):
 class Category(TimeStampModel):
     name=models.CharField(max_length=100)
     icon=models.CharField(max_length=100,null=True,blank=True)
+    description=models.TextField(null=True,blank=True)
     
 
     def __str__(self):
@@ -53,6 +54,18 @@ class Advertisement(TimeStampModel):
 
     def __str__(self):
         return self.title
+    
+class Contact(TimeStampModel):
+    message=models.TextField()
+    name=models.CharField(max_length=100)
+    email=models.EmailField()
+    subject=models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering=["created_at"] #Contact.objects.all()==> order_by("created_at")
 
 # Post - Author
 # 1 author can add M posts => M
@@ -67,9 +80,6 @@ class Advertisement(TimeStampModel):
 # Tag - Post
 # 1 tag can have M posts => M
 # 1 post can have M tags => M
-
-
-
 ## 1 - 1 Relationship
 # 1 user can have 1 profile => 1
 # 1 profile is associated to 1 user  => 1

@@ -1,8 +1,10 @@
 from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render
-from newspaper.models import Post,Advertisement,Tag
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from newspaper.forms import ContactForm
+from newspaper.models import Post,Advertisement,Tag,Category,Contact
+from django.views.generic import ListView,CreateView
 
 
 from django.utils import timezone
@@ -86,8 +88,16 @@ class AboutUsView(ListView):
     model=Post
     template_name="newsportal/about.html"
 
-class ContactDetailView(ListView):
-    model=Post
+class ContactCreateView(CreateView):
+    model=Contact
     template_name="newsportal/contact.html"
+    form_class=ContactForm
+    success_url=reverse_lazy("contact")
+
+
+class CategoryListView(ListView):
+    model=Category
+    template_name="newsportal/categories.html"
+    context_object_name="categories"
 
     
