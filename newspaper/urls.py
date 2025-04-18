@@ -9,5 +9,6 @@ urlpatterns = [
     path("about-us/",views.AboutUsView.as_view(),name="about-us"),
     path("contact/",views.ContactCreateView.as_view(),name="contact"),
     path("category-list/",views.CategoryListView.as_view(),name="category-list"),
+    path("post-detail/<int:pk>/",views.PostDetailView.as_view(),name="post-detail"),
     
 ]
