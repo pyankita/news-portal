@@ -67,6 +67,15 @@ class Contact(TimeStampModel):
     class Meta:
         ordering=["created_at"] #Contact.objects.all()==> order_by("created_at")
 
+class UserProfile(TimeStampModel):
+    user=models.OneToOneField("auth.User",on_delete=models.CASCADE)
+    image=models.ImageField(upload_to="user_images/%Y/%m/%d",blank=False)
+    address=models.CharField(max_length=200)
+    biography=models.TextField()
+
+    def __str__(self):
+        return self.user.username
+
 # Post - Author
 # 1 author can add M posts => M
 # 1 post is associated to only 1 author => 1
